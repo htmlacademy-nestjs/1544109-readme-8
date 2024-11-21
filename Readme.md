@@ -1,7 +1,7 @@
 # Личный проект «Readme»
 
-- Студент: [Nina Lukashenko](https://up.htmlacademy.ru/nodejs-2/8/user/1544109).
-- Наставник: `Неизвестно`.
+* Студент: [Nina Lukashenko](https://up.htmlacademy.ru/nodejs-2/8/user/1544109).
+* Наставник: Konstantin Ilyin.
 
 ---
 
