@@ -1,1 +1,1 @@
-export * from './lib/data-access.module';
+export { BaseMemoryRepository } from './lib/repository/base-memory.repository';

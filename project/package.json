@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "create:lib:core": "npx nx g @nx/nest:library --name=core --directory=libs/shared/core",
-    "show:core": "npx nx show project core"
+    "show:core": "npx nx show project core",
+    "run:account": "npx nx run account:serve"
   },
   "private": true,
   "dependencies": {

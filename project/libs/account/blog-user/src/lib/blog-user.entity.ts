@@ -10,7 +10,7 @@ export class BlogUserEntity extends Entity implements StorableEntity<AuthUser> {
   constructor(user: AuthUser) {
     super();
 
-    this.id = user.id; // NOTE: calling setter from abstract class Entity
+    this.id = user.id || ''; // NOTE: calling setter from abstract class Entity
     this.email = user.email;
     this.firstName = user.firstName;
     this.lastName = user.lastName;
