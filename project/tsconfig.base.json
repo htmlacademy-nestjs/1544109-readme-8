@@ -20,7 +20,7 @@
         "libs/account/authentication/src/index.ts"
       ],
       "@project/account/blog-user": ["libs/account/blog-user/src/index.ts"],
-      "@project/account/config": ["libs/account/config/src/index.ts"],
+      "@project/account/configuration": ["libs/account/configuration/src/index.ts"],
       "@project/shared/core": ["libs/shared/core/src/index.ts"],
       "@project/shared/data-access": ["libs/shared/data-access/src/index.ts"],
       "@project/shared/helpers": ["libs/shared/helpers/src/index.ts"]
