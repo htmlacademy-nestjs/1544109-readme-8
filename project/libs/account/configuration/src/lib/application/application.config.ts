@@ -12,7 +12,7 @@ export interface ApplicationConfig {
 const getApplicationConfig = async (): Promise<ApplicationConfig> => {
   const config = plainToClass(ApplicationConfiguration, {
     environment: process.env['NODE_ENV'],
-    port: process.env['README_APPLICATION_PORT'] ? parseInt(process.env['README_APPLICATION_PORT'], 10) : DEFAULT_APPLICATION_PORT,
+    port: process.env['ACCOUNT_APPLICATION_PORT'] ? parseInt(process.env['ACCOUNT_APPLICATION_PORT'], 10) : DEFAULT_APPLICATION_PORT,
   });
 
   await config.validate();

@@ -29,4 +29,5 @@ const getDBConfig = async (): Promise<MongoConfiguration> => {
 
 export default registerAs('db', async (): Promise<ConfigType<typeof getDBConfig>> => {
   return getDBConfig();
-})
+});
+
