@@ -6,7 +6,7 @@
     "create:lib:core": "npx nx g @nx/nest:library --name=core --directory=libs/shared/core",
     "show:core": "npx nx show project core",
     "run:account": "npx nx run account:serve",
-    "docker:compose": "docker compose --file ./apps/account/docker-compose.dev.yml --project-name \"readme\" --env-file ./apps/account/account.env up -d"
+    "docker:compose:account": "docker compose --file ./apps/account/docker-compose.dev.yml --project-name \"readme_account\" --env-file ./apps/account/account.env up -d"
   },
   "private": true,
   "dependencies": {
