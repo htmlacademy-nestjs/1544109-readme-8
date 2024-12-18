@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import applicationConfig from './application/application.config';
+import mongoDbConfig from './mongodb/mongo.config';
 
 const ENV_FILE_PATH = 'apps/blog/blog.env';
 
@@ -11,6 +12,7 @@ const ENV_FILE_PATH = 'apps/blog/blog.env';
       cache: true,
       load: [
         applicationConfig,
+        mongoDbConfig,
       ],
       envFilePath: ENV_FILE_PATH
     })

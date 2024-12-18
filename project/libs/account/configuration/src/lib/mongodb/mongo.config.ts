@@ -3,15 +3,6 @@ import { plainToClass } from 'class-transformer';
 import { DEFAULT_MONGO_PORT } from './mongo.constant';
 import { MongoConfiguration } from './mongo.env';
 
-export interface MongoConfig {
-  name: string;
-  host: string;
-  port: number;
-  user: string;
-  password: string;
-  authBase: string;
-}
-
 const getDBConfig = async (): Promise<MongoConfiguration> => {
   const config = plainToClass(MongoConfiguration, {
     name: process.env['ACCOUNT_MONGO_DB'],
