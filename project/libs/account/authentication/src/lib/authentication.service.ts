@@ -11,10 +11,7 @@ export class AuthenticationService {
   constructor(
     private readonly blogUserRepository: BlogUserRepository,
     @Inject(dbConfig.KEY) private readonly databaseConfig: ConfigType<typeof dbConfig>,
-  ) {
-    console.log(databaseConfig.name);
-    console.log(databaseConfig.password);
-  }
+  ) {}
 
   async register(dto: CreateUserDTO): Promise<BlogUserEntity> {
     const { email, firstName, lastName, password } = dto;
