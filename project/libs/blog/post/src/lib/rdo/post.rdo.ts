@@ -1,8 +1,18 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiExtraModels, ApiProperty, getSchemaPath } from '@nestjs/swagger';
 import { Expose} from 'class-transformer';
 
 import { Content, Type } from './../post.interface';
+import { VideoRDO } from './video.rdo';
+import { TextRDO } from './text.rdo';
+import { QuoteRDO } from './quote.rdo';
+import { PhotoRDO } from './photo.rdo';
+import { LinkRDO } from './link.rdo';
 
+@ApiExtraModels(VideoRDO)
+@ApiExtraModels(TextRDO)
+@ApiExtraModels(QuoteRDO)
+@ApiExtraModels(PhotoRDO)
+@ApiExtraModels(LinkRDO)
 export class PostRDO {
   @ApiProperty({
     description: 'Post\'s unique id',
@@ -12,7 +22,7 @@ export class PostRDO {
   id!: string;
 
   @ApiProperty({
-    type: String,
+    enum: Type, enumName: 'Type',
     description: 'Post\'s type',
     example: 'video'
   })
@@ -40,31 +50,16 @@ export class PostRDO {
   @Expose()
   userId!: string;
 
-  //TODO: add for all; FIXME:
   @ApiProperty({
-    type: Object,
-    description: 'Post\'s content, depends on post\'s type',
-    examples: [
-      {
-        video: {
-          value: {
-            title: 'Animals',
-            link: 'www.youtube/animals',
-            tags: '[tag1, tag2, tag3]'
-          }
-        }
-      },
-      {
-        text: {
-          value: {
-            title: 'Animals',
-            preview: 'It is a post about animals...',
-            text: 'It is a very interesting post about animals...',
-            tags: '[tag1, tag2, tag3]'
-          }
-        }
-      },
-    ]
+    description: 'Post\'s content, DEPENDS ON post\'s type',
+    type: String,
+    oneOf: [
+      { $ref: getSchemaPath(VideoRDO) },
+      { $ref: getSchemaPath(TextRDO) },
+      { $ref: getSchemaPath(QuoteRDO) },
+      { $ref: getSchemaPath(PhotoRDO) },
+      { $ref: getSchemaPath(LinkRDO) },
+    ],
   })
   @Expose()
   content!: Content;
