@@ -1,0 +1,4 @@
+# Get posts
+GET http://localhost:3001/api/posts HTTP/1.1
+
+###

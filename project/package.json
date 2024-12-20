@@ -6,7 +6,7 @@
     "create:lib:core": "npx nx g @nx/nest:library --name=core --directory=libs/shared/core",
     "show:core": "npx nx show project core",
     "run:account": "npx nx run account:serve",
-    "docker:compose": "docker compose --file ./apps/account/docker-compose.dev.yml --project-name \"readme\" --env-file ./apps/account/account.env up -d"
+    "docker:compose:account": "docker compose --file ./apps/account/docker-compose.dev.yml --project-name \"readme_account\" --env-file ./apps/account/account.env up -d"
   },
   "private": true,
   "dependencies": {
@@ -20,7 +20,6 @@
     "bcrypt": "5.1.1",
     "class-transformer": "0.5.1",
     "class-validator": "0.14.1",
-    "dayjs": "1.11.13",
     "mongoose": "8.8.4",
     "reflect-metadata": "0.1.13",
     "rxjs": "7.8.0"
