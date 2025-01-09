@@ -21,12 +21,14 @@ export abstract class BaseMemoryRepository<E extends Entity & StorableEntity<Ret
     return this.entityFactory.create(entity);
   }
 
-  async save(entity: E): Promise<void> {
+  async save(entity: E): Promise<E | null> {
     if (!entity.id) {
       entity.id = randomUUID();
     }
 
     this.entities.set(entity.id, entity.toPOJO());
+
+    return entity;
   }
 
   async update(entity: E): Promise<void> {

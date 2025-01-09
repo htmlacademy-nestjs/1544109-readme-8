@@ -17,7 +17,7 @@ export abstract class BaseMongoRepository<E extends Entity & StorableEntity<Retu
       return null;
     }
 
-    const plainObject = document.toObject({ versionKey: false}) as ReturnType<E['toPOJO']>;
+    const plainObject = document.toObject({ getters: true, versionKey: false, flattenObjectIds: true });
 
     return this.entityFactory.create(plainObject);
   }
@@ -26,18 +26,18 @@ export abstract class BaseMongoRepository<E extends Entity & StorableEntity<Retu
     const document = await this.model.findById(id).exec();
 
     if (!document) {
-      return null;
+      throw new NotFoundException(`Document with id ${id} not found`);
     }
 
     return this.createEntityFromDocument(document);
   }
 
-  async save(entity: E): Promise<void> {
-    const newDocument = new this.model(entity.toPOJO());
+  async save(entity: E): Promise<E | null> {
+    const newDocument = await this.model.create(entity.toPOJO());
 
-    await newDocument.save();
+    const newEntity = this.createEntityFromDocument(newDocument);
 
-    entity.id = (newDocument._id as E).toString();
+    return newEntity;
   }
 
   async update(entity: E): Promise<void> {
@@ -54,5 +54,6 @@ export abstract class BaseMongoRepository<E extends Entity & StorableEntity<Retu
     if (!deletedDocument) {
       throw new NotFoundException(`Entity with id ${id} not found.`);
     }
+    
   }
 }

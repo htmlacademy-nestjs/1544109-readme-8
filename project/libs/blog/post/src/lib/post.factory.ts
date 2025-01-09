@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { EntityFactory } from '../../../../shared/core/src';
+import { EntityFactory } from '@project/shared/core';
 import { PostEntity } from './post.entity';
 import { Post } from './post.interface';
 

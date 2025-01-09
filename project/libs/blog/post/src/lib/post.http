@@ -2,3 +2,13 @@
 GET http://localhost:3001/api/posts HTTP/1.1
 
 ###
+
+# Get posts
+GET http://localhost:3001/api/posts?sort=likes HTTP/1.1
+
+###
+
+# Get posts
+GET http://localhost:3001/api/posts?page=2&limit=1 HTTP/1.1
+
+###
