@@ -3,6 +3,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 
 import { ConfigurationModule, getMongooseOptions } from '@project/blog/configuration';
 import { PostModule } from '@project/blog/post';
+import { CommentModule } from '@project/blog/comment';
 
 @Module({
   imports: [
@@ -11,6 +12,7 @@ import { PostModule } from '@project/blog/post';
       getMongooseOptions()
     ),
     PostModule,
+    CommentModule,
   ],
   controllers: [],
   providers: [],

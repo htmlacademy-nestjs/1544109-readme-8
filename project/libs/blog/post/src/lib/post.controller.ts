@@ -1,8 +1,10 @@
-import { Controller, Get, HttpStatus } from '@nestjs/common';
+import { Controller, Get, HttpStatus, Query } from '@nestjs/common';
 import { PostService } from './post.service';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { fillDto } from '@project/shared/helpers';
 import { PostRDO } from './rdo/post.rdo';
+import { PostQueryDTO } from './dto/post-query.dto';
+import { PostWithPaginationRDO } from './rdo/post-with-pagination.rdo';
 
 @ApiTags('posts')
 @Controller('posts')
@@ -21,12 +23,14 @@ export class PostController {
     description: 'Posts are not found',
   })
   @Get('/')
-  // TODO: async index(@Query() query: BlogPostQuery) {
-  async index() {
-    const results = await this.postService.getPosts();
+  async index(@Query() query: PostQueryDTO) {
+    const posts = await this.postService.getPosts(query);
 
-    const posts = results.map((result: any) => result.toPOJO());
+    const result = {
+      ...posts,
+      entities: posts.entities.map(post => post.toPOJO()),
+    }
 
-    return fillDto(PostRDO, posts);
+    return fillDto(PostWithPaginationRDO, result);
   }
 }

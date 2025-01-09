@@ -1,0 +1,21 @@
+# Get comments by for the post
+GET http://localhost:3001/api/posts/6762f2764e7fd354c6f41ba1/comments HTTP/1.1
+
+###
+
+# Create a new comment
+POST http://localhost:3001/api/posts/6762f3534e7fd354c6f41ba3/comments HTTP/1.1
+Content-Type: application/json
+
+{
+  "text": "It is a very big ...",
+  "postId": "6762f2764e7fd354c6f41ba1",
+  "userId": "6762f1b1789a32ffbf5eb2a4"
+}
+###
+
+# Delete the comment
+DELETE http://localhost:3001/api/posts/6762f2764e7fd354c6f41ba1/comments/677d4e4e639ad181d0c01572 HTTP/1.1
+Content-Type: application/json
+
+###

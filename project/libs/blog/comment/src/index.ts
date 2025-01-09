@@ -1,1 +1,1 @@
-export * from './lib/comment.module';
+export { CommentModule } from './lib/comment.module';
